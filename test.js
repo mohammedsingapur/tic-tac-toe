@@ -70,9 +70,153 @@ const comp = (exp) => {
     let i = 0
     do{ 
         i = i + 1
+        // Attack
+        // rows
+        // first row mid = O
+        if(gameArray[0] === 'O' && gameArray[2] === 'O' && gameArray[1] === ''){
+            gameArray[1] = exp
+            break
+        }
+
+        // second row mid = O
+        else if(gameArray[3] === 'O' && gameArray[5] === 'O' && gameArray[4] === ''){
+            gameArray[4] = exp
+            break
+        }
+
+        // third row mid = O
+        else if(gameArray[6] === 'O' && gameArray[8] === 'O' && gameArray[7] === ''){
+            gameArray[7] = exp
+            break
+        }
+
+        // mid element will be O
+        else if(gameArray[0] === 'O' && gameArray[8] === 'O' && gameArray[4] === '' ||
+                gameArray[2] === 'O' && gameArray[6] === 'O' && gameArray[4] === ''){
+                    gameArray[4] = exp
+                    break
+                }
+
+        // (1,1) = O
+        else if(gameArray[1] === 'O' && gameArray[2] === 'O' && gameArray[0] === ''){
+            gameArray[0] =  exp
+            break
+        }
+
+        // (2,1) = O
+        else if(gameArray[4] === 'O' && gameArray[5] === 'O' && gameArray[3] === ''){
+            gameArray[3] =  exp
+            break
+        }
+        
+        // (3,1) = O
+        else if(gameArray[7] === 'O' && gameArray[8] === 'O' && gameArray[6] === ''){
+            gameArray[6] = exp
+            break
+        }
+
+        // (1,3) = O
+        else if(gameArray[0] === 'O' && gameArray[1] === 'O' && gameArray[2] === ''){
+            gameArray[2] = exp
+            break
+        }
+
+        // (2,3) =  O
+        else if(gameArray[3] === 'O' &&  gameArray[4] === 'O' && gameArray[5] === ''){
+            gameArray[5] = exp
+            break
+        }
+
+        // (3,3) = O
+        else if(gameArray[6] === 'O' && gameArray[7] === 'O' && gameArray[8] === ''){
+            gameArray[8] =  exp
+            break
+        }
+
+        // column
+        // first element of column 1
+        else if(gameArray[3] === 'O' && gameArray[6] === 'O' && gameArray[0] === ''){
+            gameArray[0] = exp
+            break
+        }
+
+        // first element of column 2 
+        else if(gameArray[4] ===  'O' && gameArray[7] === 'O' &&  gameArray[1] === ''){
+            gameArray[1] =  exp
+            break
+        }
+
+        // first element of column 3
+        else if(gameArray[5] === 'O' && gameArray[8] === 'O' && gameArray[2] === ''){
+            gameArray[2] = exp
+            break
+        }
+
+        // mid element of column 1
+        else if(gameArray[0] === 'O' && gameArray[6] === 'O' && gameArray[3] === ''){
+            gameArray[3] = exp
+            break
+        }
+
+        // mid element of column 2
+        else  if(gameArray[1] === 'O' && gameArray[7] === 'X' && gameArray[4]  === ''){
+            gameArray[4] = exp
+            break
+        }
+
+        // mid element of column 3
+        else if(gameArray[2] ==='O' && gameArray[8] === 'O' && gameArray[5] === ''){
+            gameArray[5] = exp
+            break
+        }
+
+        // last element of column 1
+        else if(gameArray[0] === 'O' && gameArray[3] === 'O' && gameArray[6] === ''){
+            gameArray = exp
+            break
+        }
+
+        // last element of column 2
+        else if(gameArray[1] === 'O' && gameArray[4] === 'O' && gameArray[7] === ''){
+            gameArray[7] = exp
+            break
+        }
+
+        // last element of column 3
+        else if(gameArray[2] === 'O' && gameArray[5] === 'O' && gameArray[8] === ''){
+            gameArray[8] = exp
+            break
+        }
+
+        // crossElement
+        // ltr 3
+        else if(gameArray[0] === 'O' && gameArray[4] === 'O' && gameArray[8] === ''){
+            gameArray[8] = exp
+            break
+        }
+
+        // ltr 1
+        else if(gameArray[8] ===  'O' && gameArray[4] === 'O' && gameArray[0] === ''){
+            gameArray[0] = exp
+            break
+        }
+
+        // rtl 1
+        else if(gameArray[6] === 'O' && gameArray[4] === 'O' && gameArray[2] === ''){
+            gameArray[2] =  exp
+            break
+        } 
+
+        // rtl 3
+        else if(gameArray[2] === 'O' && gameArray[4] === 'O' &&  gameArray[6] === ''){
+            gameArray[6] = exp
+            break
+        }
+
+        // Defend
         // Across
         // 1st line center = 'O'
-        if(gameArray[0] === 'X' && gameArray[2] === 'X' && gameArray[1] === ''){
+        else if(gameArray[0] === 'X' && gameArray[2] === 'X' && gameArray[1] === ''){
             gameArray[1] = exp
             break
         }
@@ -212,6 +356,9 @@ const comp = (exp) => {
             break
         }
 
+        
+
+
         // random
         else{
             loc = getRandom()
@@ -242,7 +389,7 @@ const winner = () => {
     gameArray[0] === 'X' && gameArray[4] === 'X' && gameArray[8] === 'X' ||
     gameArray[2] === 'X' && gameArray[4] === 'X' && gameArray[6] === 'X' 
     ){
-        document.getElementById("left").style.display='block'
+        // document.getElementById("left").style.display='block'
         document.getElementById("right").style.display='block'
         document.getElementById("tic").disabled=true;
         document.getElementById("reload").style.display='block'
@@ -258,10 +405,17 @@ const winner = () => {
     gameArray[2] === 'O' && gameArray[4] === 'O' && gameArray[6] === 'O' 
     ){
         document.getElementById("left").style.display='block'
-        document.getElementById("right").style.display='block'
+        // document.getElementById("right").style.display='block'
         document.getElementById("tic").disabled=true;
         document.getElementById("reload").style.display='block'
         msg.innerHTML = 'O won the game'
+    }
+    else{
+        if(gameArray[0] !== '' && gameArray[1] !== '' && gameArray[2] !== '' &&
+            gameArray[3] !== '' && gameArray[4] !== '' && gameArray[5] !== '' &&
+            gameArray[6] !== '' && gameArray[7] !== '' && gameArray[8] !== ''){
+            document.getElementById("reload").style.display='block'
+        }
     }
    
 }

@@ -70,15 +70,164 @@ const comp = (exp) => {
     let i = 0
     do{ 
         i = i + 1
-        loc = getRandom()
-        if(gameArray[loc] ===''){
-            gameArray[loc] = exp
-            break;
+        // Across
+        // 1st line center = 'O'
+        if(gameArray[0] === 'X' && gameArray[2] === 'X' && gameArray[1] === ''){
+            gameArray[1] = exp
+            break
         }
         
-        else if(i===9){
-            break;
+        // 2nd line center = 'O'
+        else if(gameArray[3] === 'X' && gameArray[5] === 'X' && gameArray[4] === ''){
+            gameArray[4] = exp
+            break
         }
+
+        // 3rd line center = 'O'
+        else if(gameArray[6] === 'X' && gameArray[8] === 'X' && gameArray[7] === ''){
+            gameArray[7] = exp
+            break
+        }
+
+        // middle will  be 'O'
+        else if(gameArray[0] === 'X' && gameArray[8] === 'X' && gameArray[4] === ''||
+                gameArray[6] === 'X' && gameArray[2] === 'X' && gameArray[4] === ''){
+                    gameArray[4] = exp
+                    break
+        }
+
+        // (1,3) = 'O'
+        else if(gameArray[0] === 'X' && gameArray[1] === 'X' && gameArray[2] === ''){
+            gameArray[2] = exp
+            break
+        }
+
+        // (2,3) = 'O'
+        else if(gameArray[3] === 'X' && gameArray[4] === 'X' && gameArray[5] === ''){
+            gameArray[5] = exp
+            break
+        }
+
+        // (3,3) = 'O'
+        else if(gameArray[6] === 'X' && gameArray[7] === 'X' && gameArray[8] === ''){
+            gameArray[8] = exp
+            break
+        }
+
+        // (1,1) =  'O'
+        else if(gameArray[2] === 'X' && gameArray[1] === 'X' && gameArray[0] === ''){
+            gameArray[0] = exp
+            break
+        }
+
+        // (2,1) = 'O'
+        else if(gameArray[5] === 'X' && gameArray[4] === 'X' && gameArray[3] === ''){
+            gameArray[3]  = exp
+            break
+        }
+
+        // (3,1) = 'O'
+        else if(gameArray[8] === 'X' && gameArray[7] === 'X' && gameArray[6] === ''){
+            gameArray[6] = exp
+            break
+        }
+
+        // Top to bottom
+        // 1st column mid will O
+        else if(gameArray[0] === 'X' && gameArray[6] === 'X' && gameArray[3] === ''){
+            gameArray[3] = exp
+            break
+        }
+
+        // 2nd column mid will be O
+        else if(gameArray[1] === 'X' && gameArray[7] === 'X' && gameArray[4] === ''){
+            gameArray[4] = exp
+            break
+        }
+
+        // 3rd column mid will be O
+        else if(gameArray[2] === 'X' &&  gameArray[8] === 'X' && gameArray[5] === ''){
+            gameArray[5] = exp
+            break
+        }
+
+        // 1st column last will  be O
+        else if(gameArray[0] === 'X' && gameArray[3] === 'X' && gameArray[6] === ''){
+            gameArray[6] = exp
+            break
+        }
+
+        // 2nd column last will O
+        else if(gameArray[1] === 'X' && gameArray[4] === 'X' && gameArray[7] === ''){
+            gameArray[7] = exp
+            break
+        }
+
+        // 3rd column last will  O
+        else if(gameArray[2] === 'X' &&  gameArray[5] === 'X' && gameArray[8] === ''){
+            gameArray[8] = exp
+            break
+        }
+
+        // 1st column first will O
+        else if(gameArray[6] === 'X' && gameArray[3] === 'X' && gameArray[0] === ''){
+            gameArray[0] = exp
+            break
+        }
+
+        // 2nd column first  will be O
+        else if(gameArray[7] === 'X' && gameArray[4] === 'X' && gameArray[1] === ''){
+            gameArray[1] = exp
+            break
+        }
+
+        // 3rd column first will be O
+        else if(gameArray[8] === 'X' &&  gameArray[5] === 'X' && gameArray[2] === ''){
+            gameArray[2] = exp
+            break
+        }
+
+        // cross
+        // ltr  last will O
+        else if(gameArray[0] === 'X' && gameArray[4] === 'X' && gameArray[8] === ''){
+            gameArray[8] = exp
+            break
+        }
+
+        // ltr  first will be O
+        else if(gameArray[8] === 'X' && gameArray[4] === 'X' && gameArray[0] === ''){
+            gameArray[0] = exp
+            break
+        }
+
+        // rtl last will be O
+        else if(gameArray[2] === 'X' && gameArray[4] === 'X' && gameArray[6] === ''){
+            gameArray[6] = exp
+            break
+        }
+
+        // rtl first will be O
+        else if(gameArray[6] === 'X' && gameArray[4] === 'X' && gameArray[2] === ''){
+            gameArray[2] = exp
+            break
+        }
+
+        // random
+        else{
+            loc = getRandom()
+            if(gameArray[loc] ===''){
+                gameArray[loc] = exp
+                break;
+            }
+            else if(i===9){
+            break;
+            }
+        }
+        // else{
+        //     console.log("1st element already done")
+        //     break
+        // }
+        
     }while(gameArray[loc] !== '')
     setO()
 }

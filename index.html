@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <script src="test.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Tic Tac Toe</h1>
+    <div class="main">
+        <div id="tic">
+            <h3 id="msg">Game on</h3>
+            <button id="t1" onclick="top1()"></button>
+            <button id="t2" onclick="top2()"></button>
+            <button id="t3" onclick="top3()"></button>
+            <br>
+            <button id="m1" onclick="mid1()"></button>
+            <button id="m2" onclick="mid2()"></button>
+            <button id="m3" onclick="mid3()"></button>
+            <br>
+            <button id="l1" onclick="low1()"></button>
+            <button id="l2" onclick="low2()"></button>
+            <button id="l3" onclick="low3()"></button>
+        </div>
+        
+         <div id="right"  style="display: none;">
+            <img class="img" src="src/celebration.gif" alt="fun">
+            
+        </div>
+        <br>
+            <img id="left"src="src/giphy.gif" alt="fun" style="display: none;">
+            <button id="reload" onclick="refresh()" style="display: none;">Restart</button>
+    </div>
+</body>
+</html>

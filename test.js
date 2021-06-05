@@ -78,6 +78,7 @@ const comp = (exp) => {
         // get mid element
         if(gameArray[4] === ''){
            gameArray[4] = exp
+           winner()
            break
         }
 
@@ -88,6 +89,7 @@ const comp = (exp) => {
             cornerLoc = Math.ceil((Math.random()*4)-1)
             console.log(cornerLoc)
             gameArray[corner[cornerLoc]] = exp
+            winner()
             break
         }
 
@@ -96,24 +98,28 @@ const comp = (exp) => {
                 gameArray[3] === '' && gameArray[4] === 'X' && gameArray[5] === '' &&
                 gameArray[6] === '' && gameArray[7] === '' && gameArray[8] === 'X'){
             gameArray[2] = exp
+            winner()
             break
         }
         else if(gameArray[0] === 'O' && gameArray[1] === '' && gameArray[2] === '' &&
                 gameArray[3] === '' && gameArray[4] === 'X' && gameArray[5] === '' &&
                 gameArray[6] === '' && gameArray[7] === '' && gameArray[8] === 'X'){
             gameArray[6] = exp
+            winner()
             break
         }
         else if(gameArray[0] === '' && gameArray[1] === '' && gameArray[2] === 'O' &&
                 gameArray[3] === '' && gameArray[4] === 'X' && gameArray[5] === '' &&
                 gameArray[6] === 'X' && gameArray[7] === '' && gameArray[8] === ''){
             gameArray[8] = exp
+            winner()
             break
         }
         else if(gameArray[0] === '' && gameArray[1] === '' && gameArray[2] === 'X' &&
                 gameArray[3] === '' && gameArray[4] === 'X' && gameArray[5] === '' &&
                 gameArray[6] === 'O' && gameArray[7] === '' && gameArray[8] === ''){
             gameArray[0] = exp
+            winner()
             break
         }
 
@@ -123,6 +129,7 @@ const comp = (exp) => {
                 gameArray[6] === 'X' && gameArray[7] === '' && gameArray[8] === ''        
         ){
             gameArray[5] = exp
+            winner()
             break
         }
         else if(gameArray[0] === 'X' && gameArray[1] === '' && gameArray[2] === '' &&
@@ -130,25 +137,64 @@ const comp = (exp) => {
                 gameArray[6] === '' && gameArray[7] === '' && gameArray[8] === 'X'
         ){
             gameArray[1] = exp
+            winner()
             break
         }
+
+        // complex diagonal
+        else if(gameArray[0] === 'X' && gameArray[1] === '' && gameArray[2] === '' &&
+                gameArray[3] === '' && gameArray[4] === 'O' && gameArray[5] === '' &&
+                gameArray[6] === '' && gameArray[7] === 'X' && gameArray[8] === ''
+        ){
+            gameArray[3] = exp
+            winner()
+            break
+        }
+        else if(gameArray[0] === '' && gameArray[1] === '' && gameArray[2] === 'X' &&
+                gameArray[3] === '' && gameArray[4] === 'O' && gameArray[5] === '' &&
+                gameArray[6] === '' && gameArray[7] === 'X' && gameArray[8] === ''
+        ){
+            gameArray[5] = exp
+            winner()
+            break
+        }
+        else if(gameArray[0] === '' && gameArray[1] === 'X' && gameArray[2] === '' &&
+                gameArray[3] === '' && gameArray[4] === 'O' && gameArray[5] === '' &&
+                gameArray[6] === 'X' && gameArray[7] === '' && gameArray[8] === ''
+        ){
+            gameArray[3] = exp
+            winner()
+            break
+        }
+        else if(gameArray[0] === '' && gameArray[1] === 'X' && gameArray[2] === '' &&
+                gameArray[3] === '' && gameArray[4] === 'O' && gameArray[5] === '' &&
+                gameArray[6] === '' && gameArray[7] === '' && gameArray[8] === 'X'
+        ){
+            gameArray[5] = exp
+            winner()
+            break
+        }
+
         // Attack
         // rows
         // first row mid = O
         else if(gameArray[0] === 'O' && gameArray[2] === 'O' && gameArray[1] === ''){
             gameArray[1] = exp
+            winner()
             break
         }
 
         // second row mid = O
         else if(gameArray[3] === 'O' && gameArray[5] === 'O' && gameArray[4] === ''){
             gameArray[4] = exp
+            winner()
             break
         }
 
         // third row mid = O
         else if(gameArray[6] === 'O' && gameArray[8] === 'O' && gameArray[7] === ''){
             gameArray[7] = exp
+            winner()
             break
         }
 
@@ -156,42 +202,49 @@ const comp = (exp) => {
         else if(gameArray[0] === 'O' && gameArray[8] === 'O' && gameArray[4] === '' ||
                 gameArray[2] === 'O' && gameArray[6] === 'O' && gameArray[4] === ''){
                     gameArray[4] = exp
+                    winner()
                     break
                 }
 
         // (1,1) = O
         else if(gameArray[1] === 'O' && gameArray[2] === 'O' && gameArray[0] === ''){
             gameArray[0] =  exp
+            winner()
             break
         }
 
         // (2,1) = O
         else if(gameArray[4] === 'O' && gameArray[5] === 'O' && gameArray[3] === ''){
             gameArray[3] =  exp
+            winner()
             break
         }
         
         // (3,1) = O
         else if(gameArray[7] === 'O' && gameArray[8] === 'O' && gameArray[6] === ''){
             gameArray[6] = exp
+            winner()
             break
         }
 
         // (1,3) = O
         else if(gameArray[0] === 'O' && gameArray[1] === 'O' && gameArray[2] === ''){
             gameArray[2] = exp
+            winner()
             break
         }
 
         // (2,3) =  O
         else if(gameArray[3] === 'O' &&  gameArray[4] === 'O' && gameArray[5] === ''){
             gameArray[5] = exp
+            winner()
             break
         }
 
         // (3,3) = O
         else if(gameArray[6] === 'O' && gameArray[7] === 'O' && gameArray[8] === ''){
             gameArray[8] =  exp
+            winner()
             break
         }
 
@@ -199,54 +252,63 @@ const comp = (exp) => {
         // first element of column 1
         else if(gameArray[3] === 'O' && gameArray[6] === 'O' && gameArray[0] === ''){
             gameArray[0] = exp
+            winner()
             break
         }
 
         // first element of column 2 
         else if(gameArray[4] ===  'O' && gameArray[7] === 'O' &&  gameArray[1] === ''){
             gameArray[1] =  exp
+            winner()
             break
         }
 
         // first element of column 3
         else if(gameArray[5] === 'O' && gameArray[8] === 'O' && gameArray[2] === ''){
             gameArray[2] = exp
+            winner()
             break
         }
 
         // mid element of column 1
         else if(gameArray[0] === 'O' && gameArray[6] === 'O' && gameArray[3] === ''){
             gameArray[3] = exp
+            winner()
             break
         }
 
         // mid element of column 2
         else  if(gameArray[1] === 'O' && gameArray[7] === 'X' && gameArray[4]  === ''){
             gameArray[4] = exp
+            winner()
             break
         }
 
         // mid element of column 3
         else if(gameArray[2] ==='O' && gameArray[8] === 'O' && gameArray[5] === ''){
             gameArray[5] = exp
+            winner()
             break
         }
 
         // last element of column 1
         else if(gameArray[0] === 'O' && gameArray[3] === 'O' && gameArray[6] === ''){
             gameArray = exp
+            winner()
             break
         }
 
         // last element of column 2
         else if(gameArray[1] === 'O' && gameArray[4] === 'O' && gameArray[7] === ''){
             gameArray[7] = exp
+            winner()
             break
         }
 
         // last element of column 3
         else if(gameArray[2] === 'O' && gameArray[5] === 'O' && gameArray[8] === ''){
             gameArray[8] = exp
+            winner()
             break
         }
 
@@ -254,24 +316,28 @@ const comp = (exp) => {
         // ltr 3
         else if(gameArray[0] === 'O' && gameArray[4] === 'O' && gameArray[8] === ''){
             gameArray[8] = exp
+            winner()
             break
         }
 
         // ltr 1
         else if(gameArray[8] ===  'O' && gameArray[4] === 'O' && gameArray[0] === ''){
             gameArray[0] = exp
+            winner()
             break
         }
 
         // rtl 1
         else if(gameArray[6] === 'O' && gameArray[4] === 'O' && gameArray[2] === ''){
             gameArray[2] =  exp
+            winner()
             break
         } 
 
         // rtl 3
         else if(gameArray[2] === 'O' && gameArray[4] === 'O' &&  gameArray[6] === ''){
             gameArray[6] = exp
+            winner()
             break
         }
 
@@ -280,18 +346,21 @@ const comp = (exp) => {
         // 1st line center = 'O'
         else if(gameArray[0] === 'X' && gameArray[2] === 'X' && gameArray[1] === ''){
             gameArray[1] = exp
+            winner()
             break
         }
         
         // 2nd line center = 'O'
         else if(gameArray[3] === 'X' && gameArray[5] === 'X' && gameArray[4] === ''){
             gameArray[4] = exp
+            winner()
             break
         }
 
         // 3rd line center = 'O'
         else if(gameArray[6] === 'X' && gameArray[8] === 'X' && gameArray[7] === ''){
             gameArray[7] = exp
+            winner()
             break
         }
 
@@ -299,42 +368,49 @@ const comp = (exp) => {
         else if(gameArray[0] === 'X' && gameArray[8] === 'X' && gameArray[4] === ''||
                 gameArray[6] === 'X' && gameArray[2] === 'X' && gameArray[4] === ''){
                     gameArray[4] = exp
+                    winner()
                     break
         }
 
         // (1,3) = 'O'
         else if(gameArray[0] === 'X' && gameArray[1] === 'X' && gameArray[2] === ''){
             gameArray[2] = exp
+            winner()
             break
         }
 
         // (2,3) = 'O'
         else if(gameArray[3] === 'X' && gameArray[4] === 'X' && gameArray[5] === ''){
             gameArray[5] = exp
+            winner()
             break
         }
 
         // (3,3) = 'O'
         else if(gameArray[6] === 'X' && gameArray[7] === 'X' && gameArray[8] === ''){
             gameArray[8] = exp
+            winner()
             break
         }
 
         // (1,1) =  'O'
         else if(gameArray[2] === 'X' && gameArray[1] === 'X' && gameArray[0] === ''){
             gameArray[0] = exp
+            winner()
             break
         }
 
         // (2,1) = 'O'
         else if(gameArray[5] === 'X' && gameArray[4] === 'X' && gameArray[3] === ''){
             gameArray[3]  = exp
+            winner()
             break
         }
 
         // (3,1) = 'O'
         else if(gameArray[8] === 'X' && gameArray[7] === 'X' && gameArray[6] === ''){
             gameArray[6] = exp
+            winner()
             break
         }
 
@@ -342,54 +418,63 @@ const comp = (exp) => {
         // 1st column mid will O
         else if(gameArray[0] === 'X' && gameArray[6] === 'X' && gameArray[3] === ''){
             gameArray[3] = exp
+            winner()
             break
         }
 
         // 2nd column mid will be O
         else if(gameArray[1] === 'X' && gameArray[7] === 'X' && gameArray[4] === ''){
             gameArray[4] = exp
+            winner()
             break
         }
 
         // 3rd column mid will be O
         else if(gameArray[2] === 'X' &&  gameArray[8] === 'X' && gameArray[5] === ''){
             gameArray[5] = exp
+            winner()
             break
         }
 
         // 1st column last will  be O
         else if(gameArray[0] === 'X' && gameArray[3] === 'X' && gameArray[6] === ''){
             gameArray[6] = exp
+            winner()
             break
         }
 
         // 2nd column last will O
         else if(gameArray[1] === 'X' && gameArray[4] === 'X' && gameArray[7] === ''){
             gameArray[7] = exp
+            winner()
             break
         }
 
         // 3rd column last will  O
         else if(gameArray[2] === 'X' &&  gameArray[5] === 'X' && gameArray[8] === ''){
             gameArray[8] = exp
+            winner()
             break
         }
 
         // 1st column first will O
         else if(gameArray[6] === 'X' && gameArray[3] === 'X' && gameArray[0] === ''){
             gameArray[0] = exp
+            winner()
             break
         }
 
         // 2nd column first  will be O
         else if(gameArray[7] === 'X' && gameArray[4] === 'X' && gameArray[1] === ''){
             gameArray[1] = exp
+            winner()
             break
         }
 
         // 3rd column first will be O
         else if(gameArray[8] === 'X' &&  gameArray[5] === 'X' && gameArray[2] === ''){
             gameArray[2] = exp
+            winner()
             break
         }
 
@@ -397,24 +482,28 @@ const comp = (exp) => {
         // ltr  last will O
         else if(gameArray[0] === 'X' && gameArray[4] === 'X' && gameArray[8] === ''){
             gameArray[8] = exp
+            winner()
             break
         }
 
         // ltr  first will be O
         else if(gameArray[8] === 'X' && gameArray[4] === 'X' && gameArray[0] === ''){
             gameArray[0] = exp
+            winner()
             break
         }
 
         // rtl last will be O
         else if(gameArray[2] === 'X' && gameArray[4] === 'X' && gameArray[6] === ''){
             gameArray[6] = exp
+            winner()
             break
         }
 
         // rtl first will be O
         else if(gameArray[6] === 'X' && gameArray[4] === 'X' && gameArray[2] === ''){
             gameArray[2] = exp
+            winner()
             break
         }
 
@@ -426,6 +515,7 @@ const comp = (exp) => {
             loc = getRandom()
             if(gameArray[loc] ===''){
                 gameArray[loc] = exp
+                winner()
                 break;
             }
             else if(i===9){
@@ -491,7 +581,6 @@ function top1(){
     var t1 = document.getElementById("t1")
     if(gameArray[0]==='O'){
         t1.disabled=true
-        winner()
     }
     else{
         t1.innerHTML='X'
@@ -500,7 +589,6 @@ function top1(){
         t1.disabled=true
         winner()
         comp('O')
-        winner()
         // console.log("hello"+gameArray[0])
     }
 }
@@ -508,7 +596,6 @@ function top2(){
     var t1 = document.getElementById("t2")
     if(gameArray[1]==='O'){
         t1.disabled=true
-        winner()
     }
     else{
         t1.innerHTML='X'
@@ -517,14 +604,12 @@ function top2(){
         t1.disabled=true
         winner()       
         comp('O')
-        winner()
     }
 }
 function top3(){
     var t1 = document.getElementById("t3")
     if(gameArray[2]==='O'){
         t1.disabled=true
-        winner()
     }
     else{
         t1.innerHTML='X'
@@ -533,14 +618,12 @@ function top3(){
         t1.disabled=true
         winner()
         comp('O')
-        winner()
     }
 }
 function mid1(){
     var t1 = document.getElementById("m1")
     if(gameArray[3]==='O'){
         t1.disabled=true
-        winner()
     }
     else{
         t1.innerHTML='X'
@@ -549,14 +632,12 @@ function mid1(){
         t1.disabled=true
         winner()
         comp('O')
-        winner()
     }
 }
 function mid2(){
     var t1 = document.getElementById("m2")
     if(gameArray[4]==='O'){
         t1.disabled=true
-        winner()
     }
     else{
         t1.innerHTML='X'
@@ -565,14 +646,12 @@ function mid2(){
         t1.disabled=true
         winner()
         comp('O')
-        winner()
     }
 }
 function mid3(){
     var t1 = document.getElementById("m3")
     if(gameArray[5]==='O'){
         t1.disabled=true
-        winner()
     }
     else{
         t1.innerHTML='X'
@@ -581,14 +660,12 @@ function mid3(){
         t1.disabled=true
         winner()
         comp('O')
-        winner()
     }
 }
 function low1(){
     var t1 = document.getElementById("l1")
     if(gameArray[6]==='O'){
         t1.disabled=true
-        winner()
     }
     else{
         t1.innerHTML='X'
@@ -597,14 +674,12 @@ function low1(){
         t1.disabled=true
         winner()
         comp('O')
-        winner()
     }
 }
 function low2(){
     var t1 = document.getElementById("l2")
     if(gameArray[7]==='O'){
         t1.disabled=true
-        winner()
     }
     else{
         t1.innerHTML='X'
@@ -613,14 +688,12 @@ function low2(){
         t1.disabled=true
         winner()
         comp('O')
-        winner()
     }
 }
 function low3(){
     var t1 = document.getElementById("l3")
     if(gameArray[8]==='O'){
         t1.disabled=true
-        winner()
     }
     else{
         t1.innerHTML='X'
@@ -629,7 +702,6 @@ function low3(){
         t1.disabled=true
         winner()
         comp('O')
-        winner()
     }
 }
 function refresh(){

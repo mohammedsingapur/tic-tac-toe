@@ -118,11 +118,17 @@ const comp = (exp) => {
         }
 
         // Strong diagonal
-        else if(gameArray[2] === 'X' &&  gameArray[4] === 'O' && gameArray[6] === 'X' && gameArray[5] === ''){
+        else if(gameArray[0] === '' && gameArray[1] === '' && gameArray[2] === 'X' &&
+                gameArray[3] === '' && gameArray[4] === 'O' && gameArray[5] === '' &&
+                gameArray[6] === 'X' && gameArray[7] === '' && gameArray[8] === ''        
+        ){
             gameArray[5] = exp
             break
         }
-        else if(gameArray[0] === 'X' &&  gameArray[4] === 'O' && gameArray[8] === 'X' && gameArray[1] === ''){
+        else if(gameArray[0] === 'X' && gameArray[1] === '' && gameArray[2] === '' &&
+                gameArray[3] === '' && gameArray[4] === 'O' && gameArray[5] === '' &&
+                gameArray[6] === '' && gameArray[7] === '' && gameArray[8] === 'X'
+        ){
             gameArray[1] = exp
             break
         }

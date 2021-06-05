@@ -174,6 +174,38 @@ const comp = (exp) => {
             winner()
             break
         }
+        else if(gameArray[0] === 'X' && gameArray[1] === '' && gameArray[2] === '' &&
+                gameArray[3] === '' && gameArray[4] === 'O' && gameArray[5] === 'X' &&
+                gameArray[6] === '' && gameArray[7] === '' && gameArray[8] === ''
+        ){
+            gameArray[1] = exp
+            winner()
+            break
+        }
+        else if(gameArray[0] === '' && gameArray[1] === '' && gameArray[2] === '' &&
+                gameArray[3] === 'X' && gameArray[4] === 'O' && gameArray[5] === '' &&
+                gameArray[6] === '' && gameArray[7] === '' && gameArray[8] === 'X'
+        ){
+            gameArray[7] = exp
+            winner()
+            break
+        }
+        else if(gameArray[0] === '' && gameArray[1] === '' && gameArray[2] === 'X' &&
+                gameArray[3] === 'X' && gameArray[4] === 'O' && gameArray[5] === '' &&
+                gameArray[6] === '' && gameArray[7] === '' && gameArray[8] === ''
+        ){
+            gameArray[1] = exp
+            winner()
+            break
+        }
+        else if(gameArray[0] === '' && gameArray[1] === '' && gameArray[2] === '' &&
+                gameArray[3] === '' && gameArray[4] === 'O' && gameArray[5] === 'X' &&
+                gameArray[6] === 'X' && gameArray[7] === '' && gameArray[8] === ''
+        ){
+            gameArray[7] = exp
+            winner()
+            break
+        }
 
         // Attack
         // rows

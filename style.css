@@ -32,7 +32,8 @@ button{
 }
 
 #right .img{
-    width: 250%;
+    width: 200px;
+    height : 220px
 }
 h1{
     color :crimson;
@@ -52,7 +53,7 @@ h3{
 }
 #right{
     position: relative;
-    left: 40%;
+    left: 50%;
     transform: translate(-50%, 0); 
     
 }
@@ -68,4 +69,14 @@ h3{
     border-radius: 50%;
     background-color:teal;
     
+}
+.score{
+    display: flex;
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+}
+h4{
+    margin : 2px;
+    margin-left : 10px;
 }

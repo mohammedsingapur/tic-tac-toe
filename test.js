@@ -1,5 +1,7 @@
 
 var gameArray = ['','','','','','','','','']
+let win = 0
+let lose = 0
 function getRandom(){
     let rand = Math.floor((Math.random()*9))
     return rand;
@@ -68,12 +70,66 @@ const setO = () => {
 const comp = (exp) => {
     let loc
     let i = 0
+    let corner = [0,2,6,8]
+    let cornerLoc
     do{ 
         i = i + 1
+        // two sided defence
+        // get mid element
+        if(gameArray[4] === ''){
+           gameArray[4] = exp
+           break
+        }
+
+        // 4 corner
+        else if(gameArray[0] === '' && gameArray[1] === '' && gameArray[2] === '' &&
+        gameArray[3] === '' && gameArray[4] === 'X' && gameArray[5] === '' &&
+        gameArray[6] === '' && gameArray[7] === '' && gameArray[8] === ''){
+            cornerLoc = Math.ceil((Math.random()*4)-1)
+            console.log(cornerLoc)
+            gameArray[corner[cornerLoc]] = exp
+            break
+        }
+
+        // cross diagnoal block
+        else if(gameArray[0] === 'X' && gameArray[1] === '' && gameArray[2] === '' &&
+                gameArray[3] === '' && gameArray[4] === 'X' && gameArray[5] === '' &&
+                gameArray[6] === '' && gameArray[7] === '' && gameArray[8] === 'X'){
+            gameArray[2] = exp
+            break
+        }
+        else if(gameArray[0] === 'O' && gameArray[1] === '' && gameArray[2] === '' &&
+                gameArray[3] === '' && gameArray[4] === 'X' && gameArray[5] === '' &&
+                gameArray[6] === '' && gameArray[7] === '' && gameArray[8] === 'X'){
+            gameArray[6] = exp
+            break
+        }
+        else if(gameArray[0] === '' && gameArray[1] === '' && gameArray[2] === 'O' &&
+                gameArray[3] === '' && gameArray[4] === 'X' && gameArray[5] === '' &&
+                gameArray[6] === 'X' && gameArray[7] === '' && gameArray[8] === ''){
+            gameArray[8] = exp
+            break
+        }
+        else if(gameArray[0] === '' && gameArray[1] === '' && gameArray[2] === 'X' &&
+                gameArray[3] === '' && gameArray[4] === 'X' && gameArray[5] === '' &&
+                gameArray[6] === 'O' && gameArray[7] === '' && gameArray[8] === ''){
+            gameArray[0] = exp
+            break
+        }
+
+        // Strong diagonal
+        else if(gameArray[2] === 'X' &&  gameArray[4] === 'O' && gameArray[6] === 'X' && gameArray[5] === ''){
+            gameArray[5] = exp
+            break
+        }
+        else if(gameArray[0] === 'X' &&  gameArray[4] === 'O' && gameArray[8] === 'X' && gameArray[1] === ''){
+            gameArray[1] = exp
+            break
+        }
         // Attack
         // rows
         // first row mid = O
-        if(gameArray[0] === 'O' && gameArray[2] === 'O' && gameArray[1] === ''){
+        else if(gameArray[0] === 'O' && gameArray[2] === 'O' && gameArray[1] === ''){
             gameArray[1] = exp
             break
         }
@@ -393,7 +449,9 @@ const winner = () => {
         document.getElementById("right").style.display='block'
         document.getElementById("tic").disabled=true;
         document.getElementById("reload").style.display='block'
-        msg.innerHTML = 'X won the game'
+        win++
+        document.getElementById("win").innerHTML = 'Win  : '+win
+        msg.innerHTML = 'You won'
     }
     else if(gameArray[0] === 'O' && gameArray[1] === 'O' && gameArray[2] === 'O' ||
     gameArray[3] === 'O' && gameArray[4] === 'O' && gameArray[5] === 'O' ||
@@ -408,12 +466,16 @@ const winner = () => {
         // document.getElementById("right").style.display='block'
         document.getElementById("tic").disabled=true;
         document.getElementById("reload").style.display='block'
-        msg.innerHTML = 'O won the game'
+        lose++
+        document.getElementById("lose").innerHTML = 'Lost : '+lose
+        msg.innerHTML = 'You Lost'
     }
     else{
         if(gameArray[0] !== '' && gameArray[1] !== '' && gameArray[2] !== '' &&
             gameArray[3] !== '' && gameArray[4] !== '' && gameArray[5] !== '' &&
-            gameArray[6] !== '' && gameArray[7] !== '' && gameArray[8] !== ''){
+            gameArray[6] !== '' && gameArray[7] !== '' && gameArray[8] !== ''
+            ){
+            msg.innerHTML = 'Match Tied'
             document.getElementById("reload").style.display='block'
         }
     }
@@ -565,5 +627,54 @@ function low3(){
     }
 }
 function refresh(){
-    window.location.reload()
+    var tic = document.getElementById("tic")
+    var t1 = document.getElementById("t1")
+    var t2 = document.getElementById("t2")
+    var t3 = document.getElementById("t3")
+
+    var m1 = document.getElementById("m1")
+    var m2 = document.getElementById("m2")
+    var m3 = document.getElementById("m3")
+
+    var l1 = document.getElementById("l1")
+    var l2 = document.getElementById("l2")
+    var l3 = document.getElementById("l3")
+
+    t1.disabled=false
+    t1.innerHTML = ''
+
+    t2.disabled=false
+    t2.innerHTML = ''
+
+    t3.disabled=false
+    t3.innerHTML = ''
+
+    m1.disabled=false
+    m1.innerHTML = ''
+
+    m2.disabled=false
+    m2.innerHTML = ''
+
+    m3.disabled=false
+    m3.innerHTML = ''
+
+    l1.disabled=false
+    l1.innerHTML = ''
+
+    l2.disabled=false
+    l2.innerHTML = ''
+
+    l3.disabled=false
+    l3.innerHTML =  ''
+
+    for(let i=0;  i<gameArray.length; i++){
+        gameArray[i] = ''
+    }
+
+        document.getElementById("left").style.display='none'
+        document.getElementById("right").style.display='none'
+        tic.disabled=false;
+        document.getElementById("reload").style.display='none'
+        document.getElementById("msg").innerHTML = 'Game on'
+
 }
